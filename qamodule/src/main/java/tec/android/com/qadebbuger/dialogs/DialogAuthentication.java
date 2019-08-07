@@ -3,12 +3,12 @@ package tec.android.com.qadebbuger.dialogs;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import android.widget.TextView;
 
 import library.android.com.qamodule.R;
@@ -22,10 +22,11 @@ public class DialogAuthentication extends DialogFragment implements FirebaseMana
     private EditText etAuthenticationPassword;
     private TextView btnAccept;
     private TextView btnCancel;
-    private LinearLayout loadingContainer;
+    private LinearLayoutCompat loadingContainer;
     private String packageName;
     private FirebaseManager firebaseManager;
     private QAAuthenticationCallback mListener;
+    private LinearLayoutCompat layoutForm;
 
     /**
      * Required empty private constructor
@@ -56,6 +57,7 @@ public class DialogAuthentication extends DialogFragment implements FirebaseMana
         btnAccept = view.findViewById(R.id.authentication_accept);
         btnCancel = view.findViewById(R.id.authentication_cancel);
         loadingContainer = view.findViewById(R.id.authentication_loading);
+        layoutForm = view.findViewById(R.id.layout_form);
 
         btnAccept.setOnClickListener(onAccept);
         btnCancel.setOnClickListener(onCancel);
@@ -104,12 +106,18 @@ public class DialogAuthentication extends DialogFragment implements FirebaseMana
 
     @Override
     public void showLoading() {
+
         loadingContainer.setVisibility(View.VISIBLE);
+        layoutForm.setVisibility(View.GONE);
+
     }
 
     @Override
     public void hideLoading() {
+
         loadingContainer.setVisibility(View.GONE);
+        layoutForm.setVisibility(View.VISIBLE);
+
     }
 
     /**
