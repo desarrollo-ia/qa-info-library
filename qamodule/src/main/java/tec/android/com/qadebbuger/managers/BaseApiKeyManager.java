@@ -1,6 +1,6 @@
 package tec.android.com.qadebbuger.managers;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import org.json.JSONException;
@@ -26,7 +26,15 @@ public class BaseApiKeyManager<
     private FIREBASEAPP firebaseApp;
     private AWSMOBILECLIENT awsMobileClient;
     private static final String API_KEY = "API_KEY";
-    private static final String ZZK_PROPERTY = "zzk";
+
+    /**
+     * @deprecated
+     * ZZK_PROPERTY use OPTIONS_PROPERTY to new version of FirebaseApp
+     */
+    @Deprecated
+    public static final String ZZK_PROPERTY = "zzk";
+    public static final String OPTIONS_PROPERTY = "options";
+
     private static final String ZZE_PROPERTY = "zze";
     private static final String APP_ID_PROPERTY = "AppId";
     private static final String ENDPOINT_DELIMITER = "/v";
@@ -92,9 +100,9 @@ public class BaseApiKeyManager<
      * @param maskApiKey specifies if it should mask the api key
      * @return the api key requested
      */
-    public String getFirebaseApiKey(@NonNull boolean maskApiKey) {
+    public String getFirebaseApiKey(@NonNull boolean maskApiKey, @NonNull String PROPERTY) {
         ReflectionUtils<FIREBASEAPP, FIREBASEOPTIONS> reflectionUtils = new ReflectionUtils<>();
-        FIREBASEOPTIONS firebaseOptions = reflectionUtils.getProperty(firebaseApp, ZZK_PROPERTY);
+        FIREBASEOPTIONS firebaseOptions = reflectionUtils.getProperty(firebaseApp, PROPERTY);
         ReflectionUtils<FIREBASEOPTIONS, String> firebaseOptionsReflection = new ReflectionUtils<>();
         return maskApiKey ? maskApiKey(firebaseOptionsReflection.getProperty(firebaseOptions, ZZE_PROPERTY))
                 : firebaseOptionsReflection.getProperty(firebaseOptions, ZZE_PROPERTY);
