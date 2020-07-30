@@ -3,7 +3,7 @@
 This library was made thinking in the QA personnel, to give them the chance to inspect basic aspects of the application they're debugging. With this library they'll be able to discover the *version name*, *version code*, the *environment* of the app, the *ssl pinning status*, the *endpoints* the app is using, and the last but not least, to be able to enable/disable *ssl pinning* at will. 
 
 # **Setup**
-This library is available _via_ ![](https://jitpack.io/v/knockmark10/QALibrary.svg)
+This library is available _via_ [![](https://jitpack.io/v/desarrollo-ia/qa-info-library.svg)](https://jitpack.io/#desarrollo-ia/qa-info-library)
 
  1. Add it in your root build.gradle at the end of repositories:
 
