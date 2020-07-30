@@ -19,7 +19,7 @@ allprojects {
  2. Add the dependency:
 ```java
 dependencies {
-	implementation 'com.github.knockmark10:QALibrary:$version'
+	implementation 'com.github.desarrollo-ia:qa-info-library:1.0.4'
 }
 ```
 
